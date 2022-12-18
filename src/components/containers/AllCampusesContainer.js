@@ -13,7 +13,7 @@ import { withRouter } from "react-router-dom";
 
 import {
   fetchAllCampusesThunk,
-  deleteCampusThunk
+  deleteCampusThunk,
 } from "../../store/thunks";
 
 import { AllCampusesView } from "../views";
