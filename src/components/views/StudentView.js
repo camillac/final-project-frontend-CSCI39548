@@ -4,6 +4,8 @@ StudentView.js
 The Views component is responsible for rendering web page with data provided by the corresponding Container component.
 It constructs a React component to display the single student view page.
 ================================================== */
+import { Link } from 'react-router-dom';
+
 const StudentView = (props) => {
   const { student } = props;
 
@@ -11,8 +13,16 @@ const StudentView = (props) => {
   return (
     <div>
       <h1>{student.firstname + " " + student.lastname}</h1>
-      <img src={student.imageURL} alt="https://images.squarespace-cdn.com/content/v1/58962c6a440243be53fd739d/1501788229215-54S3CNHM498H1OIP929E/image-asset.gif" width="200" height="200"/>
-      <h3>{student.campus.name}</h3>
+      <img src={student.imageURL} alt="Student Image" width="200" height="200"/>
+      {student.campus != null ?
+        <Link to={`/campus/${student.campus.id}`}>
+          <h3>{student.campus.name}</h3>
+        </Link>
+      :
+        <h3>Currently Not Enrolled In A Campus</h3>
+      }
+      <h4>Email: {student.email}</h4>
+      <h4>GPA: {student.gpa}</h4>
     </div>
   );
 
