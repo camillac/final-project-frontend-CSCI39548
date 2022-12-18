@@ -20,6 +20,9 @@ class NewStudentContainer extends Component {
     this.state = {
       firstname: "",
       lastname: "",
+      email: "",
+      image: "",
+      gpa: null,
       campusId: null,
       redirect: false,
       redirectId: null
@@ -37,10 +40,17 @@ class NewStudentContainer extends Component {
   handleSubmit = async event => {
     event.preventDefault();  // Prevent browser reload/refresh after submit.
 
+    if (this.state.imageURL == "") {
+      this.state.imageURL = "https://media.cntraveler.com/photos/631b4fe1f2f54501e692c5d3/master/pass/University%20of%20Michigan_GettyImages-470656298.jpg"
+    }
+
     let student = {
         firstname: this.state.firstname,
         lastname: this.state.lastname,
-        campusId: this.state.campusId
+        email: this.state.email,
+        imageURL: this.state.imageURL,
+        gpa: this.state.gpa,
+        campusId: this.state.campusId,
     };
 
     // Add new student in back-end database
@@ -48,8 +58,11 @@ class NewStudentContainer extends Component {
 
     // Update state, and trigger redirect to show the new student
     this.setState({
-      firstname: "", 
+      firstname: "",
       lastname: "",
+      email: "",
+      image: "",
+      gpa: null,
       campusId: null,
       redirect: true,
       redirectId: newStudent.id
