@@ -21,7 +21,7 @@ import { AllCampusesView } from "../views";
 class AllCampusesContainer extends Component {
   // Get all campuses data from back-end database
   componentDidMount() {
-    console.log(this.props);
+    // console.log(this.props);
     this.props.fetchAllCampuses();
   }
 

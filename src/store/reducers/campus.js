@@ -1,7 +1,7 @@
 /*==================================================
 /src/store/reducers/campus.js
 
-This is a Reducer function that accepts 2 parameters: the previous state object (aka current state) and an action object. 
+This is a Reducer function that accepts 2 parameters: the previous state object (aka current state) and an action object.
 Depending on the Action object, the Reducer updates the State and return the new State object.
 It also defines the State and its default initial value.
 ================================================== */
@@ -17,6 +17,7 @@ const campus = (state = initialState, action) => {  // Use "initialState" as def
   switch (action.type) {
     case FETCH_CAMPUS:
       return action.payload;
+
     default:
       // If the Reducer doesn't recognize the Action Type, returns the previous (current) State unchanged.
       return state;
