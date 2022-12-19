@@ -22,12 +22,12 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     textAlign: 'left',
     fontType: 'bold',
-    fontFamily: 'sans-serif', 
-    fontSize: '35px', 
+    fontFamily: 'sans-serif',
+    fontSize: '35px',
     color: 'darkblue'
   },
   appBar:{
-    backgroundColor: '#fcb6bb',
+    backgroundColor: '#cee3eb',
     shadows: ['none'],
   },
   greeting:{
@@ -74,7 +74,7 @@ const Header = () => {
         </Toolbar>
       </AppBar>
     </div>
-  );    
+  );
 }
 
 export default Header;

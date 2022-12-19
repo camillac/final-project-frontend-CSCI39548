@@ -29,8 +29,9 @@ class StudentContainer extends Component {
   }
 }
 
-// The following 2 input arguments are passed to the "connect" function used by "StudentContainer" to connect to Redux Store.  
-// The following 2 input arguments are passed to the "connect" function used by "AllCampusesContainer" component to connect to Redux Store.
+// 1. The "mapState" argument specifies the data from Redux Store that the component needs.
+// The "mapState" is called when the Store State changes, and it returns a data object of "student".
+// The following 2 input arguments are passed to the "connect" function used by "StudentContainer" to connect to Redux Store.
 const mapState = (state) => {
   return {
     student: state.student,  // Get the State object from Reducer "student"
@@ -45,6 +46,6 @@ const mapDispatch = (dispatch) => {
 };
 
 // Export store-connected container by default
-// StudentContainer uses "connect" function to connect to Redux Store and to read values from the Store 
+// StudentContainer uses "connect" function to connect to Redux Store and to read values from the Store
 // (and re-read the values when the Store State updates).
 export default connect(mapState, mapDispatch)(StudentContainer);
