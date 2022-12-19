@@ -31,6 +31,7 @@ class CampusContainer extends Component {
     let student = {
       campusId: null,
       campus: null,
+      gpa: null,
       id: studentId
     };
 

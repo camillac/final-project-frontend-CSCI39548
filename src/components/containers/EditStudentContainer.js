@@ -66,7 +66,11 @@ class EditStudentContainer extends Component {
       student.gpa=prev.gpa;
     }
 
-    if(student.campusId===''){
+    if(student.imageURL===''){
+      student.imageURL=prev.imageURL;
+    }
+
+    if (student.campusId===''){
       student.campusId=prev.campusId;
     }
 

@@ -19,8 +19,8 @@ const AllStudentsView = (props) => {
     </div>
     );
   }
-  
-  // If there is at least one student, render All Students view 
+
+  // If there is at least one student, render All Students view
   return (
     <div>
       <h1>All Students</h1>
@@ -32,6 +32,10 @@ const AllStudentsView = (props) => {
               <Link to={`/student/${student.id}`}>
                 <h2>{name}</h2>
               </Link>
+              <img src={student.imageURL} alt="Student" width="200" height="200"/>
+              <br></br>
+              <br></br>
+
               <button onClick={() => deleteStudent(student.id)}>Delete</button>
               <hr/>
             </div>
