@@ -7,7 +7,7 @@ It constructs a React component to display the single student view page.
 import { Link } from 'react-router-dom';
 
 const StudentView = (props) => {
-  const { student } = props;
+  const { student, deleteStudent } = props;
 
   // Render a single Student view
   return (
@@ -30,6 +30,13 @@ const StudentView = (props) => {
 
       <Link to={`/editstudent/${student.id}`}>
         <button>Edit Student</button>
+      </Link>
+
+      <br></br>
+      <br></br>
+
+      <Link to={`/students`}>
+        <button onClick={() => deleteStudent(student.id)}>Delete Student</button>
       </Link>
     </div>
   );
