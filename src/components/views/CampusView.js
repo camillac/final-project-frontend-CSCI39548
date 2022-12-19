@@ -5,10 +5,14 @@ The Views component is responsible for rendering web page with data provided by 
 It constructs a React component to display a single campus and its students (if any).
 ================================================== */
 import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const {campus, deleteCampus, unenroll} = props;
+  const {campus, deleteCampus, allStudents, editStudent} = props;
+  let enrolledStudents = allStudents.filter(student => student.campusId===campus.id);
+  let unenrolledStudents = allStudents.filter(student => student.campusId!==campus.id);
 
   // Render a single Campus view with list of its students
   return (
@@ -19,41 +23,60 @@ const CampusView = (props) => {
       <p>{campus.description}</p>
 
       <Link to={`/editcampus/${campus.id}`}>
-        <button>Edit Campus</button>
+        <Button variant="contained" color="primary">Edit Campus</Button>
       </Link>
 
       <br></br>
       <br></br>
 
       <Link to={`/campuses`}>
-        <button onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
+        <Button variant="contained" color="primary" onClick={() => deleteCampus(campus.id)}>
+          Delete Campus
+        </Button>
       </Link>
 
+
       <div>
-        {campus.students.length !== 0 ?
-          <div>
-            <h2>Students:</h2>
-              {campus.students.map( student => {
-                let name = student.firstname + " " + student.lastname;
-                return (
-                  <div key={student.id}>
-                    <Link to={`/student/${student.id}`}>
-                      <h3>{name}</h3>
-                    </Link>
-                    <button onClick={(e) => unenroll(e, student.id)}>Unenroll</button>
-                  </div>
-                );
-              })}
+        <h2>Current Students:</h2>
+          {enrolledStudents.map( student => {
+            let name = student.firstname + " " + student.lastname;
+            return (
+              <div key={student.id}>
+                <Link to={`/student/${student.id}`}>
+                  <h3>{name}</h3>
+                </Link>
+                <Button variant="contained" color="primary" onClick={() => editStudent({id: student.id, campusId: null, campus: null})}>
+                  Unenroll
+                </Button>
+              </div>
+            );
+          })}
+
+      <br></br>
+      <br></br>
+      </div>
+      <div>
+        <h2>Enroll New/Existing Students:</h2>
+          {unenrolledStudents.map( student => {
+            let name = student.firstname + " " + student.lastname;
+            return (
+              <div key={student.id}>
+                <Link to={`/student/${student.id}`}>
+                  <h3>{name}</h3>
+                </Link>
+                <Button variant="contained" color="primary" onClick={() => editStudent({id: student.id, campusId: campus.id, campus: campus})}>
+                  Enroll
+                </Button>
+              </div>
+            );
+          })}
 
           <br></br>
           <br></br>
           </div>
-          :
-          <h3> There Are Currently No Students Enrolled In This Campus </h3>
-        }
-      </div>
-      <Link to={`/students`}>
-        <button>Enroll New/Existing Students</button>
+
+      <Link to={`/newstudent`}>
+        <Button variant="contained" color="primary">Add New Student</Button>
       </Link>
       <br></br>
       <br></br>

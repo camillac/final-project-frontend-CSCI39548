@@ -5,6 +5,7 @@ The Views component is responsible for rendering web page with data provided by 
 It constructs a React component to display the all students view page.
 ================================================== */
 import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
 
 const AllStudentsView = (props) => {
   const {students, deleteStudent} = props;
@@ -12,9 +13,11 @@ const AllStudentsView = (props) => {
   if (!students.length) {
     return (
     <div>
-      <p>There are no students.</p>
+      <h2>There are no students.</h2>
       <Link to={`newstudent`}>
-        <button>Add New Student</button>
+        <Button variant="contained" color="primary">
+          Add New Student
+        </Button>
       </Link>
     </div>
     );
@@ -36,7 +39,9 @@ const AllStudentsView = (props) => {
               <br></br>
               <br></br>
 
-              <button onClick={() => deleteStudent(student.id)}>Delete</button>
+              <Button variant="contained" color="primary" onClick={() => deleteStudent(student.id)}>
+                Delete
+              </Button>
               <hr/>
             </div>
           );
@@ -44,7 +49,9 @@ const AllStudentsView = (props) => {
       )}
       <br/>
       <Link to={`/newstudent`}>
-        <button>Add New Student</button>
+        <Button variant="contained" color="primary">
+          Add New Student
+        </Button>
       </Link>
       <br/><br/>
     </div>

@@ -7,6 +7,7 @@ It constructs a React component to display the edit campus page.
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from "react-router-dom";
 
 // Create styling for the input form
 const useStyles = makeStyles( () => ({
@@ -67,11 +68,16 @@ const EditCampusView = (props) => {
             <br/>
 
             <label style={{color:'#11153e', fontWeight: 'bold'}}>Image URL: </label>
-            <input type="text" name="imageURL" defaultValue={campus.imageURL} onChange={(e) => handleChange(e)} />
+            <input type="url" name="imageURL" defaultValue={campus.imageURL} onChange={(e) => handleChange(e)} />
             <br/>
             <br/>
 
-            <Button variant="contained" color="primary" type="submit">
+            <Link to={`/campus/${campus.id}`}>
+              <Button variant="contained" color="primary" style={{marginRight: '125px'}}>
+                Cancel
+              </Button>
+            </Link>
+            <Button variant="contained" color="primary" type="submit" style={{marginLeft: '125px'}}>
               Submit
             </Button>
             <br/>

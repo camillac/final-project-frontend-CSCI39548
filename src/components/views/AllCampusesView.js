@@ -6,6 +6,8 @@ It constructs a React component to display all campuses.
 ================================================== */
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+
 
 const AllCampusesView = (props) => {
   const {deleteCampus} = props;
@@ -13,9 +15,11 @@ const AllCampusesView = (props) => {
   if (!props.allCampuses.length) {
     return (
     <div>
-      <p>There are no campuses.</p>
+      <h2>There are no campuses.</h2>
       <Link to={`newcampus`}>
-        <button>Add New Campus</button>
+        <Button variant="contained" color="primary">
+          Add New Campus
+        </Button>
       </Link>
     </div>
     );
@@ -36,13 +40,17 @@ const AllCampusesView = (props) => {
           <h4>Campus Id: {campus.id}</h4>
           <p>{campus.address}</p>
           <p>{campus.description}</p>
-          <button onClick={() => deleteCampus(campus.id)}>Delete</button>
+          <Button variant="contained" color="primary" onClick={() => deleteCampus(campus.id)}>
+            Delete
+          </Button>
           <hr/>
         </div>
       ))}
       <br/>
       <Link to={`/newcampus`}>
-        <button>Add New Campus</button>
+        <Button variant="contained" color="primary">
+          Add New Campus
+        </Button>
       </Link>
       <br/><br/>
     </div>
