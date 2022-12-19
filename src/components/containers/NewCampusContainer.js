@@ -38,10 +38,10 @@ class NewCampusContainer extends Component {
   handleSubmit = async event => {
     event.preventDefault();  // Prevent browser reload/refresh after submit.
 
-    if (this.state.imageURL == "") {
+    if (this.state.imageURL === "") {
       this.state.imageURL = "https://media.cntraveler.com/photos/631b4fe1f2f54501e692c5d3/master/pass/University%20of%20Michigan_GettyImages-470656298.jpg"
     }
-    
+
     let campus = {
         name: this.state.name,
         address: this.state.address,
