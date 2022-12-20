@@ -35,7 +35,7 @@ const CampusView = (props) => {
         </Button>
       </Link>
 
-
+      {enrolledStudents.length !== 0 ?
       <div>
         <h2>Current Students:</h2>
           {enrolledStudents.map( student => {
@@ -51,10 +51,15 @@ const CampusView = (props) => {
               </div>
             );
           })}
+      </div>
+      :
+      <div>
+        <h2>There Are Currently No Students Enrolled</h2>
+      </div>
+      }
 
       <br></br>
-      <br></br>
-      </div>
+
       <div>
         <h2>Enroll New/Existing Students:</h2>
           {unenrolledStudents.map( student => {
