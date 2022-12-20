@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 
 // Take in props data to construct the component
 const CampusView = (props) => {
-  const {campus, deleteCampus, allStudents, editStudent} = props;
+  const {campus, deleteCampus, fetchAllStudents, allStudents, editStudent} = props;
   let enrolledStudents = allStudents.filter(student => student.campusId===campus.id);
   let unenrolledStudents = allStudents.filter(student => student.campusId!==campus.id);
 
@@ -45,7 +45,7 @@ const CampusView = (props) => {
                 <Link to={`/student/${student.id}`}>
                   <h3>{name}</h3>
                 </Link>
-                <Button variant="contained" color="primary" onClick={() => editStudent({id: student.id, campusId: null, campus: null})}>
+                <Button variant="contained" color="primary" onClick={() => {editStudent({id: student.id, campusId: null, campus: null}); fetchAllStudents()}}>
                   Unenroll
                 </Button>
               </div>
@@ -64,7 +64,7 @@ const CampusView = (props) => {
                 <Link to={`/student/${student.id}`}>
                   <h3>{name}</h3>
                 </Link>
-                <Button variant="contained" color="primary" onClick={() => editStudent({id: student.id, campusId: campus.id, campus: campus})}>
+                <Button variant="contained" color="primary" onClick={() => {editStudent({id: student.id, campusId: campus.id, campus: campus}); fetchAllStudents()}}>
                   Enroll
                 </Button>
               </div>

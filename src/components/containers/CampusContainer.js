@@ -37,6 +37,7 @@ class CampusContainer extends Component {
           campus={this.props.campus}
           deleteCampus={this.props.deleteCampus}
           editStudent={this.props.editStudent}
+          fetchAllStudents={this.props.fetchAllStudents}
           allStudents={this.props.allStudents}
         />
       </div>
